@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" href="../../static/resources/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+  <div th:fragment="common_scripts">
+
+    <!-- jQuery  -->
+    <script th:src="@{/webjars/jquery/2.2.1/jquery.min.js}" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </div>
+
+  <div th:fragment="footer">
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row small">
+          <div class="col-xs-7">
+            <p class="text-muted">&copy; Andrey Samsonov 2018</p>
+          </div>
+          <div class="col-xs-5">
+            <p class="text-muted pull-right">v 0.1</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+
+</body>
+
+</html>

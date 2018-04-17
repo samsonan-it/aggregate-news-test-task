@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+
+<head th:replace="fragments/header :: common_header(~{::title}, ~{})">
+
+  <title>News - Feed Aggregator</title>
+
+</head>
+
+<body>
+
+  <div th:replace="fragments/header :: menu(activeNav='news')" ></div>
+
+  <div class="container">
+
+    <div th:if="${success}" class="alert alert-success alert-dismissible" th:text="#{${success}}"></div>
+    <div th:if="${error}" class="alert alert-danger" th:text="#{${error}}"></div>
+
+    <div>
+      <form>
+ 
+        <label><input id="title-filter" type="text"></label>
+
+        <div>
+          <a th:href="@{/news}" id="submit-filter-btn" role="button" class="btn btn-default">Apply Filter</a>
+        </div>
+
+      </form>
+    </div>
+
+    
+    <div id="news_table_full" th:fragment="news_table_full">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Feed</th>
+          <th>Title</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody th:if="${#lists.size(news) > 0}">
+        <tr class="feeds-table-row" th:each="news_item,iterationStatus : ${news}">
+          <td th:text="${news_item.feed.name}">Feed</td>
+          <td><a target="_blank" th:href="${news_item.link}"><span th:text="${news_item.title}">Title</span></a></td>
+          <td th:text="${news_item.description}">Description</td>
+        </tr>
+      <tbody>
+      <tbody class="text-center well well-lg" th:if="${#lists.size(news) == 0}">
+          
+          <tr><td colspan="4">No news found</td></tr>
+
+      </tbody>
+    </table>
+    </div>
+
+  </div>
+
+  <div th:replace="fragments/footer :: common_scripts"></div>
+
+  <script th:src="@{/resources/js/feeds.js}" src="/resources/js/feeds.js"></script>
+  
+  <div th:replace="fragments/footer :: footer">&copy; </div>
+
+</body>
+
+</html>

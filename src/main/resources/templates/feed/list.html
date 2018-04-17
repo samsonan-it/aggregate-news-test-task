@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+
+<head th:replace="fragments/header :: common_header(~{::title}, ~{})">
+
+  <title>Feeds - Feed Aggregator</title>
+
+</head>
+
+<body>
+
+  <div th:replace="fragments/header :: menu(activeNav='feeds')" ></div>
+
+  <div class="container">
+
+    <div th:if="${success}" class="alert alert-success alert-dismissible" th:text="#{${success}}"></div>
+    <div th:if="${error}" class="alert alert-danger" th:text="#{${error}}"></div>
+    <div id="notifications"></div>
+    
+    <div class="row list-header-row">
+      <div class="pull-right col-xs-1 input-group form-group list-add-buttons">
+        <a th:href="@{/feeds/add}" class="btn btn-large btn-default">Add Feed</a>
+      </div>
+    </div>
+
+    <div id="feeds_table_full" th:fragment="feeds_table_full">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>URL</th>
+          <th>Rule</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody th:if="${#lists.size(feeds) > 0}">
+        <tr class="feeds-table-row" th:each="feed,iterationStatus : ${feeds}">
+          <td th:text="${feed.name}">Feed Name</td>
+          <td th:text="${feed.url}">Owner</td>
+          <td th:text="${feed.parseRule}">Rule</td>
+          <td>
+                <a href="#" th:attr="data-id=${feed.id}" class="text-nowrap delete_feed">
+                  Delete
+                </a>
+          </td>
+        </tr>
+      <tbody>
+      <tbody class="text-center well well-lg" th:if="${#lists.size(feeds) == 0}">
+          
+          <tr><td colspan="4">No feeds found</td></tr>
+
+      </tbody>
+    </table>
+    </div>
+
+  </div>
+
+  <div th:replace="fragments/footer :: common_scripts"></div>
+
+  <script th:src="@{/resources/js/feeds.js}" src="/resources/js/feeds.js"></script>
+  
+  <div th:replace="fragments/footer :: footer">&copy; </div>
+
+</body>
+
+</html>

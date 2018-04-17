@@ -1,0 +1,97 @@
+
+/* Copied from LP Admin Console */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
+}
+
+.centralized {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.centralized.loginform {
+  width: 50%;
+  height: 50%;
+  min-width: 400px;
+  max-width: 500px;
+  padding: 40px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+  padding: 0 15px 0 15px;
+}
+
+.tab-content {
+  margin: 20px 10px 10px 10px;
+}
+
+.comma-separated-list li:after {
+  content: ",";
+}
+
+.comma-separated-list li:last-child:after {
+    content: "";
+}
+
+.required {
+  margin-left: 3px;
+  color: red;
+}
+
+/* New Styles */
+
+/* top row on pages with lists items. usually for buttons*/
+.list-header-row {
+  margin-left:0px;
+  margin-right:0px;
+}
+
+.group-item-admin-view {
+  display:flex;
+}
+
+.group-item-admin-controls-box {
+  margin-top: 10px;
+}
+
+.group-item-admin-controls {
+  margin-left: 15px;
+}
+
+.error-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.error-actions {
+  margin-top:45px;
+  margin-bottom:45px;
+}
+
+.header-label-tag {
+  font-size: 70%;
+  vertical-align: top;
+  margin-left: 5px;
+}

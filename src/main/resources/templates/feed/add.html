@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+
+<head th:replace="fragments/header :: common_header(~{::title}, ~{})">
+
+  <title>Add Feed - Feed Aggrgator</title>
+
+</head>
+
+<body>
+
+  <div th:replace="fragments/header :: menu" ></div>
+
+  <div class="container">
+
+    <legend>
+      <h2>Add Feed</h2>
+    </legend>
+
+    <div th:if="${success}" class="alert alert-success" th:text="#{${success}}"></div>
+    <div th:if="${error}" class="alert alert-danger" th:text="#{${error}}"></div>
+   
+    <form method="POST" class="form-horizontal" th:object="${feedForm}" role="form" data-toggle="validator">
+      <div class="form-group">
+        <label class="control-label col-sm-3" for="name">Feed Name<span class="required">*</span></label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" th:field="*{name}" name="name" placeholder="Feed Name"
+            th:attr="data-required-error=#{message.error.empty.field}" required>
+          <input type="hidden" th:field="*{id}" name="id" th:if="${mode == 'EDIT'}">
+          <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">Name Error</div>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3" for="type">Feed URL<span class="required">*</span></label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" th:field="*{url}" name="url" placeholder="Feed URL"
+            th:attr="data-required-error=#{message.error.empty.field}" required>
+            <div th:if="${#fields.hasErrors('url')}" th:errors="*{url}" class="text-danger">URL Error</div>
+            <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3" for="rule">Parsing Rule:</label>
+        <div class="col-sm-6">
+          <textarea class="form-control" rows="5" th:field="*{rule}" name="rule" placeholder="Enter parsing rule"></textarea>
+        </div>
+      </div>
+      <div class="form-group"> 
+        <div class="col-sm-offset-3 col-sm-10">
+          <button type="submit" class="btn btn-default">Submit</button>
+          <a th:href="@{/feeds}" href="#" class="btn btn-large btn-default">Cancel</a>
+        </div>
+      </div>
+    </form>    
+
+  </div>
+
+  <div th:replace="fragments/footer :: common_scripts"></div>
+
+  <div th:replace="fragments/footer :: footer">&copy; </div>
+
+</body>
+
+</html>
