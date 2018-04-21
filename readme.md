@@ -3,6 +3,8 @@
 ## Description
 
 Тестовое задание на тему Java + JPA/Hibernate
+Описание основного выполняемого задания: https://github.com/Life1over/test-task/blob/master/java.md
++ симпатичный UI поверх этого
 
 ## How To Start
 
